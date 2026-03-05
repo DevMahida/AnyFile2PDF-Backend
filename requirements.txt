@@ -1,0 +1,9 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pillow==11.1.0
+pandas==2.2.3
+fpdf2==2.8.2
+nbformat==5.10.4
+nbconvert==7.16.6
+jupyter==1.1.1
