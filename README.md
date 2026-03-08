@@ -6,6 +6,7 @@ FastAPI backend service that accepts uploaded files and returns generated PDF fi
 
 - File upload API (`POST /convert`)
 - Direct PDF response from conversion API (no backend PDF storage)
+- No separate download endpoint required (`/convert` returns the PDF file directly)
 - Conversion routing by file type
 - Supported conversions:
   - Images: PNG, JPG, JPEG
@@ -72,6 +73,8 @@ Uploads a file and converts it to PDF.
 - Header: `Content-Disposition: attachment; filename="<original_name>.pdf"`
 
 Note: Converted files are generated in request-scoped temporary storage and removed automatically after the response is sent.
+
+Frontend integration: call `POST /convert` with `multipart/form-data` and handle the response as a PDF blob/stream.
 
 ## Docker Deployment
 
