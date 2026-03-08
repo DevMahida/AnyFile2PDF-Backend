@@ -5,7 +5,7 @@ FastAPI backend service that accepts uploaded files and returns generated PDF fi
 ## Features
 
 - File upload API (`POST /convert`)
-- PDF download API (`GET /download/{filename}`)
+- Direct PDF response from conversion API (no backend PDF storage)
 - Conversion routing by file type
 - Supported conversions:
   - Images: PNG, JPG, JPEG
@@ -68,17 +68,10 @@ API base URL: `http://localhost:8000`
 Uploads a file and converts it to PDF.
 
 - Request: `multipart/form-data` with `file`
-- Response:
+- Response: binary PDF stream (`application/pdf`)
+- Header: `Content-Disposition: attachment; filename="<original_name>.pdf"`
 
-```json
-{
-  "pdf_url": "https://<host>/download/<filename>.pdf"
-}
-```
-
-### GET `/download/{filename}`
-
-Downloads generated PDF file.
+Note: Converted files are generated in request-scoped temporary storage and removed automatically after the response is sent.
 
 ## Docker Deployment
 
